@@ -44,7 +44,6 @@ public class Solution {
             }
         }
         Integer[] resultList = result.toArray(new Integer[0]);
-        resultList = new Integer[]{2,3,53,5,1,23};
         Arrays.sort(resultList);
         return resultList;
     }
