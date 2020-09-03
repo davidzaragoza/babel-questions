@@ -1,0 +1,76 @@
+Questions
+• What's new in Java 8? Explain some of them.
+    - lambda expressions: Interfaces with one abstract method can be instantiated with lambdas, for example Runnable r = () -> { System.out.println("I'm a runnable interface") }
+    - forEach method can be used in Iterators
+    - interfaces can have default methods
+    - stream method added to collections that allows work with them easier
+• Given the following list implement a solution in order to get even numbers using Java 8 Streams
+    List<Integer> list = Arrays.asList(1,2,3,4);
+    List<Integer> evenNumbers = list.stream().filter(n -> n % 2 == 0).collect(Collectors.toList());
+• What do you notice when you do code review?
+    - It's a good place to see how other members in the team do the things and everybody can learn from the others and their mistakes.
+• Have you ever worked with Scrum? Tell us what it is, what events do you remember and what roles are involved?
+    - I work using a mix of Scrum and Kanban. We use Jira boards and everybody have his tasks. Each day we have a daily meeting where we see how the goals are. After every sprint we usually do a retrospective to evaluate the work we did and how we can improve.    
+• What access modifiers (or visibility) do you know in Java?
+    - public, protected, private
+• Differences between an abstract class and an interface. When would you use one or the other?
+    - The abstract class can have attributes and the interface cant. I would use an abstract class when it is necessary to have attributes or an abstract object is being represented. The interface would be used when you want to define a series of methods or behaviors.
+• What is Maven and why is it used? What is Maven life cycle?
+    - Maven is a repository used mostly in Java projects to download or upload dependencies. The java projects usually contains a pom or gradle file that set the repository url and the libraries and versions that should be download in order to execute the project.
+• What is Git and what is it used for? List all Git commands that you know.
+    - Git is a version control system mostly used for source code.
+    - Some commands:
+        - git clone
+        - git init
+        - git pull
+        - git add
+        - git status
+        - git log
+        - git rm
+        - git push
+        - git checkout
+        - git branch
+        - git merge
+        - git revert
+        - git reset
+        - git config
+• What is a mock? What would you use it for?
+    - Mocks are dummy objects that replace the dependencies a class could have. They are used in Unit Testing, you can define for each test how the mock should behave
+• How would you explain to someone what Spring is? What can it bring to their projects?
+    - Spring is a Java Framework that simplifies the infrastructure of the application providing dependency injection, database connections management, etc.
+• What's the difference between Spring and Spring Boot?
+    - Spring uses a xml configuration file, Spring Boot configuration is done in code using annotations
+• Do you know what CQRS is? And Event Sourcing?
+    - I don't know what CQRS is
+    - I think it refers to communication between services through events. I have used Redis Pub / Sub and and Amazon SQS
+• Differences between IaaS and PaaS. Do you know any of each type?
+    - IaaS means infrastructure as service, you pay in order to have organization machines in a cloud environment, you can administrate almost everything. Examples: AWS, Azure, Google cloud
+    - PaaS means platform as service, you can control your application and data. Examples: Heroku
+• Explain what a Service Mesh is? Do you have an example?
+    - I don't know what Service Mesh is
+• Explain what is TDD? What is triangulation?
+    - TDD means test driven development. You first write the unit tests of the application and after that, you implement the project.
+    - I don't know what triangulation means.
+• Apply the Factory pattern with lambda expressions
+    - I know what factory pattern means but don't understand the question. Factory pattern is when you call a method that returns an object that implements an interface, and the returned object depends on method parameters.
+• Reduce the 3 classes (OldWayPaymentStrategy, CashPaymentStrategy and CreditCardStrategy) into a single class (PaymentStrategy). You do not need to create any more classes or interfaces. Also, tell me how you would use PaymentStrategy, i.e. the different payment strategies in the Main class
+    public interface PaymentStrategy {
+
+        double pay(double amount);
+
+        static PaymentStrategy cash() {
+            double serviceCharge = 5.00;
+            return amount -> amount + serviceCharge;
+        }
+
+        static PaymentStrategy creditCard() {
+            double serviceCharge = 5.00;
+            double creditCardFee = 10.00;
+            return amount -> amount + serviceCharge + creditCardFee;
+        }
+    }
+
+    public static void main(String[] args) {
+        PaymentStrategy cash = PaymentStrategy.cash();
+        PaymentStrategy creditCard = PaymentStrategy.creditCard();
+    }
